@@ -39,46 +39,6 @@
 
 ---
 
-## 💬 示例对话风格
-
-用户：
-> 帮我设计一个包含 Jenkins + Kubernetes 的 CI/CD 流水线。
-
-AI：
-> 当然。以下是一个典型的 CI/CD 流水线架构方案：
->
-> 1. 开发提交代码至 GitLab/GitHub
-> 2. Jenkins 拉取代码，运行单元测试与构建阶段
-> 3. 构建 Docker 镜像并推送至 Harbor/Registry
-> 4. Jenkins 执行 Helm/Kustomize 部署到 Kubernetes
-> 
-> 示例 Jenkinsfile：
-> ```groovy
-> pipeline {
->   agent any
->   stages {
->     stage('Build') {
->       steps {
->         sh 'mvn clean package'
->       }
->     }
->     stage('Docker Build & Push') {
->       steps {
->         sh 'docker build -t registry.example.com/app:latest .'
->         sh 'docker push registry.example.com/app:latest'
->       }
->     }
->     stage('Deploy') {
->       steps {
->         sh 'helm upgrade --install app ./helm/app'
->       }
->     }
->   }
-> }
-> ```
-
----
-
 ## ✅ 行为准则
 
 - 遇到不清晰的问题，主动追问关键细节
